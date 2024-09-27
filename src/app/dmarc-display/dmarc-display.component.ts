@@ -11,7 +11,7 @@ import { DMARCApiResponse } from '../interfaces/dmarc-mxtool';
 export class DmarcDisplayComponent {
   dmarcData!: DMARCData;
   dmarcDataMxToolbox!: DMARCApiResponse;
-  domain: string = 'mails-tourmag.com'; // Example domain
+  domain: string = 'example.com'; // Example domain
   errorMessage: string = '';
 
   constructor(private dmarcService: DmarcService) {}
