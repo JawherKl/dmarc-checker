@@ -1,0 +1,57 @@
+<div *ngIf="dmarcData">
+    <h2>DMARC Check for {{ dmarcData.domain }} from tools (checkdmarc)</h2>
+  
+    <h3>DMARC Record</h3>
+    <p>{{ dmarcData.dmarc.record }}</p>
+  
+    <h3>DMARC Tags</h3>
+    <ul>
+      <li *ngFor="let tag of dmarcData.dmarc.tags | keyvalue">
+        {{ tag.key }}: {{ tag.value.value }} (Explicit: {{ tag.value.explicit }})
+      </li>
+    </ul>
+  
+    <h3>Warnings</h3>
+    <ul>
+      <li *ngFor="let warning of dmarcData.dmarc.warnings">{{ warning }}</li>
+    </ul>
+  
+    <h3>MX Records</h3>
+    <ul>
+      <li *ngFor="let mx of dmarcData.mx.hosts">
+        {{ mx.hostname }} (Priority: {{ mx.preference }})
+      </li>
+    </ul>
+  
+    <h3>SPF</h3>
+    <p>Record: {{ dmarcData.spf.record }}</p>
+
+
+  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+
+  </div>
+
+  <div *ngIf="dmarcDataMxToolbox">
+    <h1>DMARC Data for {{ dmarcDataMxToolbox.CommandArgument }}  from tools (MxToolbox)</h1>
+    <p><strong>Time Recorded:</strong> {{ dmarcDataMxToolbox.TimeRecorded }}</p>
+    <p><strong>Reporting Name Server:</strong> {{ dmarcDataMxToolbox.ReportingNameServer }}</p>
+    
+    <h3>Warnings</h3>
+    <ul>
+      <li *ngFor="let warning of dmarcDataMxToolbox.Warnings">
+        <strong>{{ warning.Name }}</strong>: {{ warning.Info }}
+      </li>
+    </ul>
+  
+    <h3>Passed Checks</h3>
+    <ul>
+      <li *ngFor="let passed of dmarcDataMxToolbox.Passed">
+        <strong>{{ passed.Name }}</strong>: {{ passed.Info }}
+      </li>
+    </ul>
+  </div>
+  
+  <div *ngIf="errorMessage">
+    <p class="error">{{ errorMessage }}</p>
+  </div>
