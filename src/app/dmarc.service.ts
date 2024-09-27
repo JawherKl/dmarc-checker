@@ -19,9 +19,9 @@ interface DmarcResponse {
   providedIn: 'root'
 })
 export class DmarcService {
-  private apiUrl = 'http://localhost:9060/checkdmarc'; // Update with actual API URL
+  private apiUrl = 'http://localhost:5000/checkdmarc'; // Update with actual API URL
   private apiUrlMxToolbox = 'https://api.mxtoolbox.com/api/v1/Lookup';
-  private apiKeyMxToolbox = '7a2cbc03-c147-464d-a458-4aa32df924f4';
+  private apiKeyMxToolbox = 'your-value-of-api-key-mxtoolbox';
 
   constructor(private http: HttpClient) { }
 
