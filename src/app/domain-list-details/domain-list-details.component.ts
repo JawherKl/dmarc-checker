@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
-import { DmarcService } from '../dmarc.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DMARCData } from '../interfaces/dmarc';
 import { DMARCApiResponse } from '../interfaces/dmarc-mxtool';
-import { Router } from '@angular/router';
+import { DmarcService } from '../dmarc.service';
 
 @Component({
-  selector: 'app-dmarc-display',
-  templateUrl: './dmarc-display.component.html',
-  styleUrls: ['./dmarc-display.component.css']
+  selector: 'app-domain-list-details',
+  templateUrl: './domain-list-details.component.html',
+  styleUrls: ['./domain-list-details.component.css']
 })
-export class DmarcDisplayComponent {
+export class DomainListDetailsComponent implements OnInit {
   dmarcData!: DMARCData;
   dmarcDataMxToolbox!: DMARCApiResponse;
   domain!: string; // Example domain
@@ -21,9 +21,16 @@ export class DmarcDisplayComponent {
   selectedTab: string = 'dmarc'; // Default selected tab
 
   constructor(private dmarcService: DmarcService, 
-    private router: Router) {}
+    private route: ActivatedRoute, 
+    private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.domain = params['domain']; // Get the domain value from the route params
+      this.domainMxtoolbox = params['domain'];
+      this.checkDmarc();
+      this.fetchDMARCData();
+    });
   }
 
   selectTab(tab: string): void {
