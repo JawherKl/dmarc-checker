@@ -1,38 +1,122 @@
-<div *ngIf="dmarcData">
-    <h2>DMARC Check for {{ dmarcData.domain }} from tools (checkdmarc)</h2>
-  
-    <h3>DMARC Record</h3>
-    <p>{{ dmarcData.dmarc.record }}</p>
-  
-    <h3>DMARC Tags</h3>
-    <ul>
-      <li *ngFor="let tag of dmarcData.dmarc.tags | keyvalue">
-        {{ tag.key }}: {{ tag.value.value }} (Explicit: {{ tag.value.explicit }})
-      </li>
-    </ul>
-  
-    <h3>Warnings</h3>
-    <ul>
-      <li *ngFor="let warning of dmarcData.dmarc.warnings">{{ warning }}</li>
-    </ul>
-  
-    <h3>MX Records</h3>
-    <ul>
-      <li *ngFor="let mx of dmarcData.mx.hosts">
-        {{ mx.hostname }} (Priority: {{ mx.preference }})
-      </li>
-    </ul>
-  
-    <h3>SPF</h3>
-    <p>Record: {{ dmarcData.spf.record }}</p>
+<div class="container">
+  <button type="button" (click)="redirectToDomainList()" class="btn btn-secondary">Go to Domain List</button>
+</div>
+<div class="container">
+  <h1>Résultats pour le domaine: mails-tourmag.com</h1>
 
-
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
-
-
+  <!-- Tabs -->
+  <div class="tab">
+    <button (click)="selectTab('dmarc')" [class.active]="selectedTab === 'dmarc'">DMARC</button>
+    <button (click)="selectTab('mxToolbox')" [class.active]="selectedTab === 'mxToolbox'">MxToolbox</button>
   </div>
 
-  <div *ngIf="dmarcDataMxToolbox">
+<!-- DMARC Section -->
+  <div *ngIf="selectedTab === 'dmarc'" class="section active">
+    <h1>DMARC Check for Domain</h1>
+    <div class="form-group">
+      <label for="domain">Enter Domain</label>
+      <input [(ngModel)]="domain" type="text" id="domain" class="form-control" placeholder="Enter a domain" (blur)="checkDmarc()" />
+      <button (click)="checkDmarc()" class="btn btn-primary mt-3">Check DMARC</button>
+    </div>
+
+    <!-- Show loading spinner -->
+    <div *ngIf="loading" class="loading-spinner">
+      <p>Loading...</p>
+    </div>
+
+    <!-- Show error if there's an issue -->
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+
+    <!-- Display the data once it's loaded -->
+    <div *ngIf="dmarcData" [hidden]="error || loading">
+      <h3>Domain Information for {{ dmarcData.domain }}</h3>
+
+      <div class="section">
+        <h2>DMARC</h2>
+        <div class="info">
+          <p><span>Location:</span> {{ dmarcData.domain }}</p>
+          <p><span>Record:</span> {{ dmarcData.dmarc.record }}</p>
+          <ul class="tag-list">
+            <li *ngFor="let tag of dmarcData.dmarc.tags | keyvalue">
+              <span>{{ tag.key }}: {{ tag.value.value }} (Explicit: {{ tag.value.explicit }})</span>
+            </li>
+          </ul>
+          <p class="valid"><strong>Valid:</strong> {{ dmarcData.dmarc.valid }}</p>
+          <div class="warnings">
+            <strong>Warnings:</strong>
+            <ul>
+              <li>{{ dmarcData.dmarc.warnings }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>MX</h2>
+        <div class="info">
+          <li *ngFor="let host of dmarcData.mx.hosts">
+            <p><span>Host:</span> {{ host.hostname }}</p>
+            <p><span>IP:</span> {{ host.addresses[0] }}</p>
+            <p><span>STARTTLS:</span> {{ host.starttls }}</p>
+            <p><span>TLS:</span> {{ host.tls }}</p>
+          </li>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>SPF</h2>
+        <div class="info">
+          <p><span>Record:</span> {{ dmarcData.spf.record }}</p>
+          <p class="valid"><span>Valide:</span> Oui</p>
+          <div class="warnings">
+            <strong>Warnings:</strong>
+            <ul>
+              <li>The ptr mechanism should not be used</li>
+              <li>The ptr mechanism should not be used</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>DNSSEC</h2>
+        <div class="info">
+          <p><strong>DNSSEC:</strong> {{ dmarcData.dnssec ? 'Enabled' : 'Not Enabled' }}</p>
+        </div>
+      </div>
+    
+      <div class="section">
+        <h2>MTA-STS</h2>
+        <div class="info error">
+          <p class="error"><strong>Error:</strong> {{ dmarcData.mta_sts.error }}</p>
+          <p class="valid"><strong>Valid:</strong> Non</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+ <!-- MxToolbox Section -->
+ <div *ngIf="selectedTab === 'mxToolbox'" class="section">
+  <h1>DMARC Check for Domain</h1>
+  <div class="form-group">
+    <label for="domainMxtoolbox">Enter Domain</label>
+    <input [(ngModel)]="domainMxtoolbox" type="text" id="domainMxtoolbox" class="form-control" placeholder="Enter a domain" (blur)="fetchDMARCData()"/>
+    <button (click)="fetchDMARCData()" class="btn btn-primary mt-3">Check DMARC</button>
+  </div>
+
+  <!-- Show loadingMxtoolbox spinner -->
+  <div *ngIf="loadingMxtoolbox" class="loading-spinner">
+    <p>Loading...</p>
+  </div>
+
+  <!-- Show errorMxtoolbox if there's an issue -->
+  <div *ngIf="errorMxtoolbox" class="alert alert-danger">
+    {{ errorMxtoolbox }}
+  </div>
+  <div *ngIf="dmarcDataMxToolbox" [hidden]="errorMxtoolbox || loadingMxtoolbox">
     <h1>DMARC Data for {{ dmarcDataMxToolbox.CommandArgument }}  from tools (MxToolbox)</h1>
     <p><strong>Time Recorded:</strong> {{ dmarcDataMxToolbox.TimeRecorded }}</p>
     <p><strong>Reporting Name Server:</strong> {{ dmarcDataMxToolbox.ReportingNameServer }}</p>
@@ -51,7 +135,5 @@
       </li>
     </ul>
   </div>
-  
-  <div *ngIf="errorMessage">
-    <p class="error">{{ errorMessage }}</p>
-  </div>
+ </div>
+</div>

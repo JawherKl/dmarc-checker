@@ -32,6 +32,27 @@ export class DmarcService {
     };
     return this.http.post<DmarcResponse>(this.apiUrl, body);
   }
+  getDmarcData(domain: string, type: string): Observable<any> {
+    const payload = {
+      domain: domain,
+      format: type
+    };
+    return this.http.post<any>(this.apiUrl, payload);
+  }
+  
+  downloadCSV(data: any[], filename: string): void {
+    const blob = new Blob(data, { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.setAttribute('href', url);
+    a.setAttribute('download', filename);
+    a.style.visibility = 'hidden';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
 
   getDMARCData(domain: string): Observable<DMARCApiResponse> {
     const headers = new HttpHeaders({

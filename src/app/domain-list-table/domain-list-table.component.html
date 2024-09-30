@@ -1,0 +1,95 @@
+<div class="container">
+  <button type="button" (click)="redirectToSearchDomain()" class="btn btn-secondary">Search a new domain</button>
+</div>
+<div class="container">
+  <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Account Name</th>
+          <th scope="col">IP</th>
+          <th scope="col">Domain</th>
+          <th scope="col">Exporter (json|csv)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Cdiscount</td>
+          <td>51.254.194.41</td>
+          <td>
+            <ul>
+              <li><a [routerLink]="['/', 'cdiscount.com']">cdiscount.com</a></li>
+              <li><a [routerLink]="['/', 'mailoffice.cdiscount.com']">mailoffice.cdiscount.com</a></li>
+            </ul>
+          </td>
+          <td>
+            <button type="button" class="btn btn-success mr-3" (click)="fetchAndDownloadData('mailoffice.cdiscount.com', 'csv')">csv</button>
+            <button type="button" class="btn btn-info" (click)="fetchAndDownloadData('mailoffice.cdiscount.com', 'json')">json</button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Mediastay</td>
+          <td>91.134.251.42</td>
+          <td>
+            <ul>
+              <li><a [routerLink]="['/', 'mediastay.com']">mediastay.com</a></li>
+              <li><a [routerLink]="['/', 'aspmx2.googlemail.com']">aspmx2.googlemail.com</a></li>
+              <li><a [routerLink]="['/', 'alt1.aspmx.l.google.com']"></a></li>
+              <li><a [routerLink]="['/', 'aspmx.l.google.com']">aspmx.l.google.com</a></li>
+            </ul>
+          </td>
+          <td>
+            <button type="button" class="btn btn-success mr-3" (click)="fetchAndDownloadData('aspmx2.googlemail.com', 'csv')">csv</button>
+            <button type="button" class="btn btn-info" (click)="downloadJson()">json</button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Adscoria</td>
+          <td>51.254.194.10</td>
+          <td>
+            <ul>
+              <li><a [routerLink]="['/', 'adscoria.com']">adscoria.com</a></li>
+            </ul>
+          </td>
+          <td>
+            <button type="button" class="btn btn-success mr-3" (click)="fetchAndDownloadData('adscoria.com', 'csv')">csv</button>
+            <button type="button" class="btn btn-info" (click)="downloadJson()">json</button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>TourMaG</td>
+          <td>51.254.194.0</td>
+          <td>
+            <ul>
+              <li><a [routerLink]="['/', 'tourmag.com']">tourmag.com</a></li>
+              <li><a [routerLink]="['/', 'mails-tourmag.com']">mails-tourmag.com</a></li>
+              <li><a [routerLink]="['/', 'mails-dmcmagfr-tourmag.com']">mails-dmcmagfr-tourmag.com</a></li>
+            </ul>
+          </td>
+          <td>
+            <button type="button" class="btn btn-success mr-3" (click)="fetchAndDownloadData('mails-tourmag.com', 'csv')">csv</button>
+            <button type="button" class="btn btn-info" (click)="downloadJson()">json</button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>ING</td>
+          <td>51.38.29.0</td>
+          <td>
+            <ul>
+              <li><a [routerLink]="['/', 'ing.be']">ing.be</a></li>
+              <li><a [routerLink]="['/', 'ing-be.mail.protection.outlook.com']">ing-be.mail.protection.outlook.com</a></li>
+            </ul>
+          </td>
+          <td>
+            <button type="button" class="btn btn-success mr-3" (click)="fetchAndDownloadData('ing-be.mail.protection.outlook.com', 'csv')">csv</button>
+            <button type="button" class="btn btn-info" (click)="downloadJson()">json</button>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</div>
