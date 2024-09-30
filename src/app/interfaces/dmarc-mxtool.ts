@@ -22,6 +22,8 @@ export interface DMARCWarning {
     Tag: string;
     TagValue: string;
     Name: string;
+    Prefix: string;
+    Type: string;
     Description: string;
   }
   

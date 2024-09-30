@@ -195,5 +195,108 @@
       <span class="sr-only">Loading...</span>
     </div>
   </div>
+
+  <!-- update new monitoring section -->
+  <div class="container-fluid" *ngIf="dmarcDataMxToolbox" [hidden]="errorMxtoolbox || loadingMxtoolbox">
+    <div class="row">
+      <!-- Command Information Card -->
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Command Information</h5>
+            <p><strong>Command:</strong> {{ dmarcDataMxToolbox.Command }}</p>
+            <p><strong>Argument:</strong> {{ dmarcDataMxToolbox.CommandArgument }}</p>
+            <p><strong>Time Recorded:</strong> {{ dmarcDataMxToolbox.TimeRecorded }}</p>
+            <p><strong>Reporting Name Server:</strong> {{ dmarcDataMxToolbox.ReportingNameServer }}</p>
+            <p><strong>Time to Complete:</strong> {{ dmarcDataMxToolbox.TimeToComplete }}ms</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Passed Checks Table -->
+      <div class="col-md-8">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Passed Checks</h5>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Check Name</th>
+                  <th>Information</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let check of dmarcDataMxToolbox.Passed">
+                  <td>{{ check.Name }}</td>
+                  <td>{{ check.Info }}</td>
+                  <td><a href="{{ check.Url }}" target="_blank">More Info</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <!-- Warnings and Errors Placeholder -->
+      <div class="col-md-12">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Warnings & Errors</h5>
+            <p *ngIf="dmarcDataMxToolbox.Warnings.length === 0">No warnings found.</p>
+            <p *ngIf="dmarcDataMxToolbox.Errors.length === 0">No errors found.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <!-- SPF Information List -->
+      <div class="col-md-12">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">SPF Record Details</h5>
+            <ul>
+              <li *ngFor="let info of dmarcDataMxToolbox.Information">
+                <strong>{{ info.Prefix }} {{ info.Type }}:</strong> {{ info.Description }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <!-- Related Lookups -->
+      <div class="col-md-12">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Related Lookups</h5>
+            <ul>
+              <li *ngFor="let lookup of dmarcDataMxToolbox.RelatedLookups">
+                <strong>{{ lookup.Name }}:</strong> 
+                <a href="{{ lookup.URL }}" target="_blank">{{ lookup.CommandArgument }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <!-- Transcript -->
+      <div class="col-md-12">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Transcript</h5>
+            <pre>{{ dmarcDataMxToolbox.Transcript[0].Transcript }}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
  </div>
 </div>
