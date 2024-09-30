@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { DomainListTableComponent } from './domain-list-table/domain-list-table.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DomainListDetailsComponent } from './domain-list-details/domain-list-details.component';
+import { DmarcMonitoringComponent } from './dmarc-monitoring/dmarc-monitoring.component';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { DomainListDetailsComponent } from './domain-list-details/domain-list-de
         DmarcDisplayComponent,
         DomainListTableComponent,
         DomainListDetailsComponent,
+        DmarcMonitoringComponent,
         // other components
     ],
     imports: [

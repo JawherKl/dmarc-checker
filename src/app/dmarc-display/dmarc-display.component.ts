@@ -45,11 +45,11 @@ export class DmarcDisplayComponent {
     });
   }
 
-  fetchDMARCData() {
+  fetchDMARCData(type: string) {
     this.loadingMxtoolbox = true;
     this.errorMxtoolbox = null;
     if (this.domainMxtoolbox !== undefined) {
-      this.dmarcService.getDMARCData(this.domainMxtoolbox).subscribe({
+      this.dmarcService.getDMARCData(this.domainMxtoolbox, type).subscribe({
         next: (data) => {
           this.dmarcDataMxToolbox = data;
           this.loadingMxtoolbox = false;
