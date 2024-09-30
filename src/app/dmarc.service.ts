@@ -54,13 +54,13 @@ export class DmarcService {
   }
 
 
-  getDMARCData(domain: string): Observable<DMARCApiResponse> {
+  getDMARCData(domain: string, type: string): Observable<DMARCApiResponse> {
     const headers = new HttpHeaders({
       'Authorization': this.apiKeyMxToolbox
     });
 
     const params = {
-      command: 'dmarc',
+      command: type,
       argument: domain
     };
 

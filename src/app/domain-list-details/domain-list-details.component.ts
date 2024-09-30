@@ -56,7 +56,7 @@ export class DomainListDetailsComponent implements OnInit {
     this.loadingMxtoolbox = true;
     this.errorMxtoolbox = null;
     if (this.domainMxtoolbox !== undefined) {
-      this.dmarcService.getDMARCData(this.domainMxtoolbox).subscribe({
+      this.dmarcService.getDMARCData(this.domainMxtoolbox, 'dmarc').subscribe({
         next: (data) => {
           this.dmarcDataMxToolbox = data;
           this.loadingMxtoolbox = false;
