@@ -1,6 +1,6 @@
 /* src/app/dmarc-display/dmarc-display.component.css */
 .container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 2rem auto;
     padding: 1.5rem;
     border-radius: 8px;
@@ -170,3 +170,19 @@
       background: #007bff;
       color: white;
     }
+
+  .card {
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  table {
+    width: 100%;
+  }
+  pre {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+  }

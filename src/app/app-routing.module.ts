@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DomainListTableComponent } from './domain-list-table/domain-list-table.component';
 import { DmarcDisplayComponent } from './dmarc-display/dmarc-display.component';
 import { DomainListDetailsComponent } from './domain-list-details/domain-list-details.component';
+import { DmarcMonitoringComponent } from './dmarc-monitoring/dmarc-monitoring.component';
 
 const routes: Routes = [
   { 
@@ -16,6 +17,10 @@ const routes: Routes = [
   { 
     path: ':domain', 
     component: DomainListDetailsComponent
+  },
+  { 
+    path: 'monitoring', 
+    component: DmarcMonitoringComponent
   },
 ];
 

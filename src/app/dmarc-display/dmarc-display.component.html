@@ -2,11 +2,11 @@
   <button type="button" (click)="redirectToDomainList()" class="btn btn-secondary">Go to Domain List</button>
 </div>
 <div class="container">
-  <h1 class="title">Tools</h1>
+  <h1 class="title">Select Tools</h1>
 
   <!-- Tabs -->
   <div class="tab">
-    <button (click)="selectTab('dmarc')" [class.active]="selectedTab === 'dmarc'">DMARC</button>
+    <button (click)="selectTab('dmarc')" [class.active]="selectedTab === 'dmarc'">checkdmarc</button>
     <button (click)="selectTab('mxToolbox')" [class.active]="selectedTab === 'mxToolbox'">MxToolbox</button>
   </div>
 
@@ -100,7 +100,7 @@
 
  <!-- MxToolbox Section -->
  <div *ngIf="selectedTab === 'mxToolbox'" class="section">
-  <h1>DMARC Check for Domain: {{ domainMxtoolbox }}</h1>
+  <h1>MxToolbox Check for Domain: {{ domainMxtoolbox }}</h1>
   <div class="form-group">
     <label for="domainMxtoolbox">Enter Domain</label>
     <input [(ngModel)]="domainMxtoolbox" type="text" id="domainMxtoolbox" class="form-control" placeholder="Enter a domain"/>
@@ -127,37 +127,64 @@
     {{ errorMxtoolbox }}
   </div>
   <div *ngIf="dmarcDataMxToolbox" [hidden]="errorMxtoolbox || loadingMxtoolbox">
-    <h1>DMARC Data for {{ dmarcDataMxToolbox.CommandArgument }} from tools (MxToolbox)</h1>
+    <h1>Mailtoolbox Data for {{ dmarcDataMxToolbox.CommandArgument }} from tools (MxToolbox)</h1>
   
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
-          <th colspan="2">DMARC Summary</th>
+          <th colspan="2">General Information</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Time Recorded:</strong></td>
-          <td>{{ dmarcDataMxToolbox.TimeRecorded }}</td>
+          <td><strong>Command:</strong></td>
+          <td>{{ dmarcDataMxToolbox.Command }}</td>
+        </tr>
+        <tr>
+          <td><strong>Argument Type:</strong></td>
+          <td>{{ dmarcDataMxToolbox.ArgumentType }}</td>
+        </tr>
+        <tr>
+          <td><strong>Command Argument:</strong></td>
+          <td>{{ dmarcDataMxToolbox.CommandArgument }}</td>
         </tr>
         <tr>
           <td><strong>Reporting Name Server:</strong></td>
           <td>{{ dmarcDataMxToolbox.ReportingNameServer }}</td>
         </tr>
+        <tr>
+          <td><strong>Time Recorded:</strong></td>
+          <td>{{ dmarcDataMxToolbox.TimeRecorded }}</td>
+        </tr>
       </tbody>
     </table>
-  
+    <div class="status-panel mt-4 mb-4">
+      <div class="status-box panel-success">
+          <h5>Passed</h5>
+          <span>{{dmarcDataMxToolbox.Passed.length}} checks passed</span>
+      </div>
+      <div class="status-box panel-warning">
+          <h5>Warnings</h5>
+          <span>{{dmarcDataMxToolbox.Warnings.length}} warnings</span>
+      </div>
+      <div class="status-box panel-error">
+          <h5>Errors</h5>
+          <span>{{dmarcDataMxToolbox.Failed.length}} errors</span>
+      </div>
+    </div>
     <!-- Warnings Table -->
     <h3 *ngIf="dmarcDataMxToolbox.Warnings.length>0">Warnings</h3>
     <table class="table table-striped table-bordered" *ngIf="dmarcDataMxToolbox.Warnings.length>0">
       <thead>
         <tr>
+          <th></th>
           <th>Warning Name</th>
           <th>Info</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let warning of dmarcDataMxToolbox.Warnings">
+          <td><img src="https://images.mxtoolbox.com/public/images/statusicons/warning.png" width="17" alt="Status Warning"></td>
           <td>{{ warning.Name }}</td>
           <td>{{ warning.Info }}</td>
         </tr>
@@ -296,7 +323,11 @@
         </div>
       </div>
     </div>
+    <div class="related-lookups">
+      <h4>Related Lookups</h4>
+      <button class="btn btn-primary mr-3"><a href="https://mxtoolbox.com/api/v1/lookup/a/mails-tourmag.com" target="_blank" style="color: white">DNS Lookup</a></button>
+      <button class="btn btn-primary"><a href="https://mxtoolbox.com/api/v1/lookup/mx/mails-tourmag.com" target="_blank" style="color: white">MX Lookup</a></button>
   </div>
-
+  </div>
  </div>
 </div>
