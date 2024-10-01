@@ -55,12 +55,12 @@ export class DmarcDisplayComponent {
           this.loadingMxtoolbox = false;
         },
         error: (err) => {
-          this.errorMxtoolbox = 'Error fetching DMARC data';
+          this.errorMxtoolbox = 'Error fetching data';
           this.loadingMxtoolbox = false;
         }
       });
     } else {
-      this.errorMxtoolbox = 'Error fetching DMARC data';
+      this.errorMxtoolbox = 'Error fetching data';
       this.loadingMxtoolbox = false;
     }
   }
