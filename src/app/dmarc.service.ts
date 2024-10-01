@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DMARCApiResponse } from './interfaces/dmarc-mxtool';
+import { environment } from 'environments/environment';
 
 interface DmarcResponse {
   base_domain: string;
@@ -21,7 +22,7 @@ interface DmarcResponse {
 export class DmarcService {
   private apiUrl = 'http://localhost:9060/checkdmarc'; // Update with actual API URL
   private apiUrlMxToolbox = 'https://api.mxtoolbox.com/api/v1/Lookup';
-  private apiKeyMxToolbox = '7a2cbc03-c147-464d-a458-4aa32df924f4';
+  private apiKeyMxToolbox = environment.apiKey;
 
   constructor(private http: HttpClient) { }
 
