@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DMARCData } from '../interfaces/dmarc';
 import { DMARCApiResponse } from '../interfaces/dmarc-mxtool';
-import { DmarcService } from '../dmarc.service';
+import { DmarcService } from '../services/dmarc.service';
 
 @Component({
   selector: 'app-domain-list-details',

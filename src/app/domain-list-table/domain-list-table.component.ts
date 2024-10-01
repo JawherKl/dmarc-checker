@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DmarcService } from '../dmarc.service';
+import { DmarcService } from '../services/dmarc.service';
 
 @Component({
   selector: 'app-domain-list-table',

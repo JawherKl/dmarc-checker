@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 
 import { AppComponent } from './app.component';
-import { DmarcService } from './dmarc.service'; // Ensure you import your service
+import { DmarcService } from './services/dmarc.service'; // Ensure you import your service
 import { DmarcDisplayComponent } from './dmarc-display/dmarc-display.component';
 import { FormsModule } from '@angular/forms';
 import { DomainListTableComponent } from './domain-list-table/domain-list-table.component';

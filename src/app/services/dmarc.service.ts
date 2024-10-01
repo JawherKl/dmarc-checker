@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { DMARCApiResponse } from './interfaces/dmarc-mxtool';
+import { DMARCApiResponse } from '../interfaces/dmarc-mxtool';
 import { environment } from 'environments/environment';
 
 interface DmarcResponse {

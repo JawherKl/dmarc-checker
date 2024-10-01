@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DmarcService } from '../dmarc.service';
+import { DmarcService } from '../services/dmarc.service';
 import { DMARCData } from '../interfaces/dmarc';
 import { DMARCApiResponse } from '../interfaces/dmarc-mxtool';
 import { Router } from '@angular/router';
