@@ -19,12 +19,12 @@ export class DmarcDisplayComponent {
   error: string | null = null;
   errorMxtoolbox: string | null = null;
   selectedTab: string = 'dmarc'; // Default selected tab
+  type: string = '';
 
   constructor(private dmarcService: DmarcService, 
     private router: Router) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   selectTab(tab: string): void {
     this.selectedTab = tab; // Change selected tab
@@ -49,6 +49,7 @@ export class DmarcDisplayComponent {
     this.loadingMxtoolbox = true;
     this.errorMxtoolbox = null;
     if (this.domainMxtoolbox !== undefined) {
+      this.type=type;
       this.dmarcService.getDMARCData(this.domainMxtoolbox, type).subscribe({
         next: (data) => {
           this.dmarcDataMxToolbox = data;

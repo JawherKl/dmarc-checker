@@ -24,6 +24,9 @@ export interface DMARCWarning {
     Name: string;
     Prefix: string;
     Type: string;
+    Value: string;
+    PrefixDesc: string;
+    RecordNum: number;
     Description: string;
   }
   

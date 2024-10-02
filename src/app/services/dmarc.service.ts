@@ -59,11 +59,18 @@ export class DmarcService {
     const headers = new HttpHeaders({
       'Authorization': this.apiKeyMxToolbox
     });
-
-    const params = {
-      command: type,
-      argument: domain
-    };
+    let params = {};
+    if (type == "dkim") {
+      params = {
+        command: type,
+        argument: domain+'%3Ahub'
+      };
+    } else {
+      params = {
+        command: type,
+        argument: domain
+      };
+    }
 
     return this.http.get<DMARCApiResponse>(this.apiUrlMxToolbox, { headers, params });
   }
