@@ -40,6 +40,9 @@
   background-color: #007bff;
   color: white;
 }
+td{
+  word-break: break-all;
+}
 .transcript-section {
   margin-top: 20px;
 }
