@@ -1,27 +1,59 @@
-# DmarcChecker
+# DMARC Data Viewer - Angular Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+## Description
 
-## Development server
+This is an Angular-based application that fetches DMARC data from external tools like MxToolbox, displays it in a user-friendly interface with modern tables, and provides options to export the data as a CSV file. The app is designed to handle API requests, display responses, and offer smooth navigation across different components.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+- Fetch DMARC data from MxToolbox via the `/checkdmarc` API.
+- Display fetched data in a modern table layout.
+- Export the DMARC data to a CSV file for easy access.
+- Handle errors and loading states with alerts and spinners.
+- Dynamic routing to view specific domain data.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Prerequisites
 
-## Build
+To run this project, you will need:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Node.js and npm installed on your system.
+- Angular CLI installed globally:  
+  ```bash
+  npm install -g @angular/cli
 
-## Running unit tests
+## Setup Instructions
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 1. Clone the Repository
 
-## Running end-to-end tests
+    ``` bash
+        git clone https://github.com/yourusername/dmarc-data-viewer.git
+        cd dmarc-data-viewer
+    ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 2. Install Dependencies: Run the following command in the project directory to install all necessary npm packages:
 
-## Further help
+    ``` bash
+        npm install
+    ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### 3. Running the Application: You can run the application locally using the following command:
+
+    ``` bash
+        ng serve
+    ```
+    The app will be available at http://localhost:4200/ .
+
+### 4. API Setup: 
+The application interacts with the /checkdmarc API at http://localhost:9060/checkdmarc. Make sure that this API is running and accessible.
+
+
+### Future Enhancements
+    * Add more detailed DMARC analysis tools.
+    * Improve UI with custom themes and dynamic chart visualizations for DMARC data.
+    * Integrate additional APIs for DNS checks.
+
+### License
+    This project is licensed under the MIT License.
+    ``` bash
+        This `README.md` covers key parts of the project, including setup, components, services, routing, and CSS. You can further customize it with additional sections like contributing, issues, etc., depending on the needs of your project.
+    ```
