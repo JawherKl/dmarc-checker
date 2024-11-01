@@ -11,7 +11,6 @@ This is an Angular-based application that fetches DMARC data from external tools
 - Dynamic routing to view specific domain data.
 
 ## Prerequisites
-
 To run this project, you will need:
 
 - Node.js and npm installed on your system.
@@ -20,7 +19,6 @@ To run this project, you will need:
   npm install -g @angular/cli
 
 ## Setup Instructions
-
 ### 1. Clone the Repository
 
     ``` bash
