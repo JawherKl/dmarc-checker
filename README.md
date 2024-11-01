@@ -27,17 +27,15 @@ To run this project, you will need:
   ```
 
 ### 2. Install Dependencies: Run the following command in the project directory to install all necessary npm packages:
-
-    ``` bash
-        npm install
-    ```
+  ``` bash
+      npm install
+  ```
 
 ### 3. Running the Application: You can run the application locally using the following command:
-
-    ``` bash
-        ng serve
-    ```
-    The app will be available at http://localhost:4200/ .
+  ``` bash
+      ng serve
+  ```
+  The app will be available at http://localhost:4200/ .
 
 ### 4. API Setup: 
 The application interacts with the /checkdmarc API at http://localhost:9060/checkdmarc. Make sure that this API is running and accessible.
