@@ -49,7 +49,8 @@ The application interacts with the /checkdmarc API at http://localhost:9060/chec
     * Integrate additional APIs for DNS checks.
 
 ### License
-    This project is licensed under the MIT License.
-    ``` bash
-        This `README.md` covers key parts of the project, including setup, components, services, routing, and CSS. You can further customize it with additional sections like contributing, issues, etc., depending on the needs of your project.
-    ```
+This project is licensed under the MIT License.
+  
+  ``` bash
+      This `README.md` covers key parts of the project, including setup, components, services, routing, and CSS. You can further customize it with additional sections like contributing, issues, etc., depending on the needs of your project.
+  ```
