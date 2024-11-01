@@ -17,14 +17,14 @@ To run this project, you will need:
 - Angular CLI installed globally:  
   ```bash
   npm install -g @angular/cli
+  ```
 
 ## Setup Instructions
 ### 1. Clone the Repository
-
-    ``` bash
-        git clone https://github.com/yourusername/dmarc-data-viewer.git
-        cd dmarc-data-viewer
-    ```
+  ``` bash
+      git clone https://github.com/yourusername/dmarc-data-viewer.git
+      cd dmarc-data-viewer
+  ```
 
 ### 2. Install Dependencies: Run the following command in the project directory to install all necessary npm packages:
 
