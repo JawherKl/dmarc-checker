@@ -1,5 +1,4 @@
 # DMARC Data Viewer - Angular Project
-
 ## Description
 This is an Angular-based application that fetches DMARC data from external tools like MxToolbox, displays it in a user-friendly interface with modern tables, and provides options to export the data as a CSV file. The app is designed to handle API requests, display responses, and offer smooth navigation across different components.
 
